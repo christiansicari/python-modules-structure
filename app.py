@@ -44,9 +44,20 @@ print(pkg.subpackage.cat("hello", "world"))
 mypackage:
     main.py: some functions inside
     __init__.py: from . import main
+    subpackage:
+        main.py: some functions inside
+        __init__.py: from . import main
 
-simile a caso 1, ma posso importare solo mypackage e richiamare successivamente il package main
+
+simile a caso 1, devo esplicitare il nome del modulo da importare (pkg.main, oppure pkg.subpkg.main)
+a differenza del caso 1, posso importare i sotto moduli o i subpkg
 '''
 import MyNotEmptyInitPackage2 as pkg2
 print(pkg2.main.sum(1, 1))
 print(pkg2.subpackage.main.cat("hello", "scem"))
+
+# sono tutte forme legali le seguenti
+import MyNotEmptyInitPackage2.main
+import MyNotEmptyInitPackage2.subpackage
+import MyNotEmptyInitPackage2.subpackage.main
+
