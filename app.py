@@ -61,3 +61,22 @@ import MyNotEmptyInitPackage2.main
 import MyNotEmptyInitPackage2.subpackage
 import MyNotEmptyInitPackage2.subpackage.main
 
+
+
+'''
+importing da un modulo nella stessa cartella
+.
+    app.py
+    module.py: some function inside
+'''
+try:
+    from . import module
+    module.sub(1,2)
+except:
+    print('''Cannot use . to refer local dir, even if you have __init__.py, just write name of the file to import
+    check: https://stackoverflow.com/questions/70874423/fastapi-importerror-attempted-relative-import-with-no-known-parent-package#
+    ''')
+import module
+print(module.sub(1, 2))
+
+
